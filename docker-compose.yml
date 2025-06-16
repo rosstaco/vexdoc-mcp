@@ -1,0 +1,48 @@
+name: vexdoc-mcp
+
+services:
+  # MCP Server with HTTP transport (default)
+  mcp-server:
+    build: .
+    container_name: vexdoc-mcp-streaming
+    environment:
+      - MCP_TRANSPORT=streaming
+      - MCP_PORT=3000
+      - NODE_ENV=production
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+
+  # Development version with volume mount
+  mcp-server-dev:
+    build: .
+    container_name: vexdoc-mcp-dev
+    environment:
+      - MCP_TRANSPORT=streaming
+      - MCP_PORT=3000
+      - NODE_ENV=development
+    ports:
+      - "3001:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    restart: unless-stopped
+    profiles:
+      - dev
+
+  # stdio version (for testing)
+  mcp-server-stdio:
+    build: .
+    container_name: vexdoc-mcp-stdio
+    environment:
+      - MCP_TRANSPORT=stdio
+      - NODE_ENV=production
+    restart: "no"
+    profiles:
+      - stdio

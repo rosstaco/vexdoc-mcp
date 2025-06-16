@@ -1,0 +1,58 @@
+{
+  "name": "VexDoc MCP Development",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "nodeGypDependencies": true,
+      "version": "lts"
+    },
+    "ghcr.io/devcontainers/features/go:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+    "ghcr.io/devcontainers/features/common-utils:2": {
+        "installZsh": true,
+        "configureZshAsDefaultShell": true,
+        "installOhMyZsh": true,
+        "upgradePackages": true,
+        "username": "vscode",
+        "remoteUser": "vscode",
+        "userUid": "automatic",
+        "userGid": "automatic"
+    },
+    "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
+        "plugins": "ssh-agent zsh-syntax-highlighting zsh-autosuggestions",
+        "omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions https://github.com/zsh-users/zsh-syntax-highlighting",
+        "username": "vscode"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-typescript-next",
+        "ms-vscode.vscode-json",
+        "golang.go",
+        "ms-vscode.vscode-eslint",
+        "bradlc.vscode-tailwindcss",
+        "ms-vscode.vscode-docker"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "go.toolsManagement.checkForUpdates": "local",
+        "go.useLanguageServer": true
+      }
+    }
+  },
+  "forwardPorts": [3000, 8080, 9000],
+  "postCreateCommand": "zsh .devcontainer/post-create.sh",
+  "remoteUser": "vscode",
+  "mounts": [
+   // "source=${localWorkspaceFolder}/.devcontainer/bashrc,target=/home/vscode/.bashrc,type=bind"
+  ]
+}
