@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { spawn } from "child_process";
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
@@ -8,6 +9,38 @@ import {
   ListToolsRequestSchema
 } from "@modelcontextprotocol/sdk/types.js";
 import { tools, toolHandlers } from "./tools/index.js";
+
+// Constants
+const VEXCTL_CHECK_TIMEOUT = 5000; // 5 seconds timeout for vexctl check
+
+// Check if vexctl is available
+async function checkVexctlAvailability() {
+  return new Promise((resolve) => {
+    const vexctl = spawn("vexctl", ["version"], {
+      stdio: ["ignore", "pipe", "pipe"]
+    });
+    
+    let hasOutput = false;
+    
+    vexctl.stdout.on("data", () => {
+      hasOutput = true;
+    });
+    
+    vexctl.on("close", (code) => {
+      resolve(hasOutput || code === 0);
+    });
+    
+    vexctl.on("error", () => {
+      resolve(false);
+    });
+    
+    // Timeout after 5 seconds
+    setTimeout(() => {
+      vexctl.kill();
+      resolve(false);
+    }, VEXCTL_CHECK_TIMEOUT);
+  });
+}
 
 // Create the server
 const server = new Server(
@@ -65,6 +98,26 @@ process.on("SIGINT", async () => {
 
 // Determine transport type and start the server
 async function main() {
+  // Check for vexctl availability before starting server
+  console.error("🔍 Checking vexctl availability...");
+  const vexctlAvailable = await checkVexctlAvailability();
+  
+  if (!vexctlAvailable) {
+    console.error("❌ ERROR: vexctl command-line tool is not available");
+    console.error("");
+    console.error("The VEX Document MCP Server requires the 'vexctl' tool to be installed and available in your PATH.");
+    console.error("");
+    console.error("📦 Installation options:");
+    console.error("  • Download from: https://github.com/openvex/vexctl/releases");
+    console.error("  • Using Go: go install github.com/openvex/vexctl@latest");
+    console.error("  • Using Homebrew: brew install vexctl");
+    console.error("");
+    console.error("After installation, ensure 'vexctl version' works from your terminal.");
+    process.exit(1);
+  }
+  
+  console.error("✅ vexctl is available");
+  
   const args = process.argv.slice(2);
   const transportType = args[0] || "stdio";
   
@@ -76,14 +129,14 @@ async function main() {
     transport = new StreamableHTTPServerTransport({
       port: port
     });
-    console.error(`MCP Server running on HTTP transport at http://localhost:${port}`);
+    console.error(`🚀 MCP Server running on HTTP transport at http://localhost:${port}`);
     break;
   }
       
   case "stdio":
   default:
     transport = new StdioServerTransport();
-    console.error("MCP Server running on stdio transport");
+    console.error("🚀 MCP Server running on stdio transport");
     break;
   }
   

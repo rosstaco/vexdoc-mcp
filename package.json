@@ -1,13 +1,28 @@
 {
-  "name": "simple-mcp-server",
-  "version": "1.0.0",
-  "description": "A simple MCP server",
-  "main": "src/index.js",
+  "name": "vexdoc-mcp",
+  "version": "0.0.1",
+  "description": "MCP server for VEX (Vulnerability Exploitability eXchange) document management with AI workflow integration",
+  "main": "index.js",
+  "bin": "./src/index.js",
   "type": "module",
+  "keywords": [
+    "mcp",
+    "vex",
+    "vulnerability",
+    "security",
+    "cve",
+    "trivy",
+    "ai",
+    "model-context-protocol",
+    "vulnerability-assessment",
+    "devops",
+    "devsecops"
+  ],
   "scripts": {
     "start": "node src/index.js stdio",
     "start:stdio": "node src/index.js stdio",
     "start:streaming": "node src/index.js streaming 3000",
+    "start:http": "node src/index.js http 3000",
     "test": "node --test",
     "test:watch": "node --test --watch",
     "test:coverage": "c8 node --test",
@@ -25,5 +40,24 @@
   },
   "engines": {
     "node": ">=18.0.0"
-  }
+  },
+  "author": {
+    "name": "Ross Miles",
+    "email": "78015348+rosstaco@users.noreply.github.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rosstaco/vexdoc-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rosstaco/vexdoc-mcp/issues"
+  },
+  "homepage": "https://github.com/rosstaco/vexdoc-mcp#readme",
+  "files": [
+    "index.js",
+    "src/",
+    "README.md",
+    "LICENSE"
+  ]
 }
