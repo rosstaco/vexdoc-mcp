@@ -188,5 +188,73 @@ export const testData = {
       vulnerability: "INVALID-CVE",
       status: "not_affected"
     }
-  ]
+  ],
+
+  // VEX merge test data
+  validVexDocument: {
+    "@context": "https://openvex.dev/ns/v0.2.0",
+    "@id": "https://example.com/vex/doc1",
+    "author": "security-team@example.com",
+    "timestamp": "2024-01-01T00:00:00Z", 
+    "version": 1,
+    "statements": [
+      {
+        "vulnerability": "CVE-2024-12345",
+        "products": ["pkg:npm/example@1.0.0"],
+        "status": "not_affected",
+        "justification": "component_not_present"
+      }
+    ]
+  },
+
+  validVexDocument2: {
+    "@context": "https://openvex.dev/ns/v0.2.0",
+    "@id": "https://example.com/vex/doc2",
+    "author": "dev-team@example.com",
+    "timestamp": "2024-01-02T00:00:00Z",
+    "version": 1,
+    "statements": [
+      {
+        "vulnerability": "CVE-2024-67890",
+        "products": ["pkg:npm/another@2.0.0"],
+        "status": "affected",
+        "action_statement": "Update to version 2.1.0"
+      }
+    ]
+  },
+
+  validMergeRequest: {
+    documents: [
+      {
+        "@context": "https://openvex.dev/ns/v0.2.0",
+        "@id": "https://example.com/vex/doc1",
+        "author": "security-team@example.com",
+        "timestamp": "2024-01-01T00:00:00Z", 
+        "version": 1,
+        "statements": [
+          {
+            "vulnerability": "CVE-2024-12345",
+            "products": ["pkg:npm/example@1.0.0"],
+            "status": "not_affected",
+            "justification": "component_not_present"
+          }
+        ]
+      },
+      {
+        "@context": "https://openvex.dev/ns/v0.2.0",
+        "@id": "https://example.com/vex/doc2", 
+        "author": "dev-team@example.com",
+        "timestamp": "2024-01-02T00:00:00Z",
+        "version": 1,
+        "statements": [
+          {
+            "vulnerability": "CVE-2024-67890",
+            "products": ["pkg:npm/another@2.0.0"],
+            "status": "affected",
+            "action_statement": "Update to version 2.1.0"
+          }
+        ]
+      }
+    ]
+  }
 };

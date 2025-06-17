@@ -6,9 +6,9 @@ import {
 } from "../test-helpers.js";
 
 // Import the vexctl tool functions
-import { createVexStatementTool, handleCreateVexStatement } from "../../src/tools/vexctl.js";
+import { createVexStatementTool, handleCreateVexStatement } from "../../src/tools/vex-create.js";
 
-describe("VEX Tool", () => {
+describe("VEX Create Tool", () => {
   describe("Tool Definition", () => {
     it("should have correct tool definition structure", () => {
       const tool = createVexStatementTool;

@@ -2,7 +2,8 @@ import { describe, it } from "node:test";
 import { strict as assert } from "assert";
 
 // Import all test suites
-import "./tools/vexctl.test.js";
+import "./tools/vex-create.test.js";
+import "./tools/vex-merge.test.js";
 import "./tools/integration.test.js";
 import "./server.test.js";
 

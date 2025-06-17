@@ -1,14 +1,12 @@
 import { spawn } from "child_process";
-
-// Security: Define allowed values to prevent injection
-const ALLOWED_STATUSES = ["not_affected", "affected", "fixed", "under_investigation"];
-const ALLOWED_JUSTIFICATIONS = [
-  "component_not_present",
-  "vulnerable_code_not_present", 
-  "vulnerable_code_not_in_execute_path",
-  "vulnerable_code_cannot_be_controlled_by_adversary",
-  "inline_mitigations_already_exist"
-];
+import { 
+  ALLOWED_STATUSES, 
+  ALLOWED_JUSTIFICATIONS, 
+  VEX_CREATE_SCHEMA,
+  validateVulnerabilityFormat,
+  validateStatus,
+  validateJustification
+} from "./vex-schemas.js";
 
 // Security: Validate and sanitize input parameters
 function validateAndSanitizeInput(args) {
@@ -23,17 +21,17 @@ function validateAndSanitizeInput(args) {
     throw new Error("Vulnerability parameter is required and must be a non-empty string");
   }
   
-  if (!status || !ALLOWED_STATUSES.includes(status)) {
+  if (!status || !validateStatus(status)) {
     throw new Error(`Status must be one of: ${ALLOWED_STATUSES.join(", ")}`);
   }
   
   // Validate vulnerability format (CVE or similar)
-  if (!/^(CVE-\d{4}-\d+|GHSA-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}|[A-Z]+-\d+-\d+)$/i.test(vulnerability.trim())) {
+  if (!validateVulnerabilityFormat(vulnerability)) {
     throw new Error("Vulnerability must be in valid format (e.g., CVE-2023-1234, GHSA-xxxx-xxxx-xxxx)");
   }
   
   // Validate justification if provided
-  if (justification && !ALLOWED_JUSTIFICATIONS.includes(justification)) {
+  if (!validateJustification(justification)) {
     throw new Error(`Justification must be one of: ${ALLOWED_JUSTIFICATIONS.join(", ")}`);
   }
   
@@ -76,55 +74,8 @@ function validateAndSanitizeInput(args) {
 
 export const createVexStatementTool = {
   name: "create_vex_statement",
-  description: "Create a VEX statement using vexctl command-line tool and return the JSON content",
-  inputSchema: {
-    type: "object",
-    properties: {
-      product: {
-        type: "string",
-        description: "Product identifier (PURL format recommended, e.g., pkg:apk/wolfi/git@2.39.0-r1?arch=x86_64)",
-        maxLength: 1000
-      },
-      vulnerability: {
-        type: "string",
-        description: "Vulnerability identifier (e.g., CVE-2023-1234, GHSA-xxxx-xxxx-xxxx)",
-        pattern: "^(CVE-\\d{4}-\\d+|GHSA-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}|[A-Z]+-\\d+-\\d+)$",
-        maxLength: 50
-      },
-      status: {
-        type: "string",
-        enum: ["not_affected", "affected", "fixed", "under_investigation"],
-        description: "Impact status of the product vs the vulnerability"
-      },
-      justification: {
-        type: "string",
-        enum: [
-          "component_not_present",
-          "vulnerable_code_not_present", 
-          "vulnerable_code_not_in_execute_path",
-          "vulnerable_code_cannot_be_controlled_by_adversary",
-          "inline_mitigations_already_exist"
-        ],
-        description: "Justification for 'not_affected' status (required when status is not_affected)"
-      },
-      impact_statement: {
-        type: "string",
-        description: "Text explaining why a vulnerability cannot be exploited (only when status=not_affected)",
-        maxLength: 1000
-      },
-      action_statement: {
-        type: "string",
-        description: "Action statement for 'affected' status (only when status=affected)",
-        maxLength: 1000
-      },
-      author: {
-        type: "string",
-        description: "Author to record in the new document (default: Unknown Author)",
-        maxLength: 200
-      }
-    },
-    required: ["product", "vulnerability", "status"]
-  }
+  description: "Generate VEX (Vulnerability Exploitability eXchange) statements to document security vulnerability assessments for software products. Creates OpenVEX-compliant JSON documents that specify whether products are affected by specific vulnerabilities.",
+  inputSchema: VEX_CREATE_SCHEMA
 };
 
 export async function handleCreateVexStatement(args) {
