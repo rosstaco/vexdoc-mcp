@@ -7,7 +7,6 @@
       "version": "lts"
     },
     "ghcr.io/devcontainers/features/go:1": {
-      "version": "latest"
     },
     "ghcr.io/devcontainers/features/git:1": {
       "version": "latest"
@@ -26,7 +25,10 @@
         "userUid": "automatic",
         "userGid": "automatic"
     },
-    "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
+    "ghcr.io/jsburckhardt/devcontainer-features/just:1": {
+        "version": "latest"
+    },
+    "ghcr.io/devcontainers-extra/features/zsh-plugins:0": {
         "plugins": "ssh-agent zsh-syntax-highlighting zsh-autosuggestions",
         "omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions https://github.com/zsh-users/zsh-syntax-highlighting",
         "username": "vscode"
