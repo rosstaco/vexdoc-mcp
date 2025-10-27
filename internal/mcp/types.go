@@ -21,8 +21,11 @@ const (
 	JSONRPCVersion  = "2.0"
 	ProtocolVersion = "2024-11-05"
 	ServerName      = "vexdoc-mcp-server"
-	ServerVersion   = "0.1.0"
 )
+
+// ServerVersion can be set at build time via ldflags:
+// go build -ldflags="-X github.com/rosstaco/vexdoc-mcp/internal/mcp.ServerVersion=v1.0.0"
+var ServerVersion = "dev"
 
 // MCP Method Names
 const (

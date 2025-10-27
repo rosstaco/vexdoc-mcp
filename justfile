@@ -53,6 +53,10 @@ bench:
 fmt:
     go fmt ./...
 
+# Check if code is formatted (for CI)
+fmt-check:
+    @test -z "$(gofmt -l .)" || (echo "Code is not formatted. Run 'just fmt'" && gofmt -l . && exit 1)
+
 # Run linter
 lint:
     go vet ./...
