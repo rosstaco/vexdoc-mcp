@@ -1,6 +1,6 @@
-# VexDoc MCP Server
+# VexDoc MCP Go Implementation
 
-A Model Context Protocol (MCP) server for VEX (Vulnerability Exploitability eXchange) document operations, written in Go.
+A Model Context Protocol (MCP) server implementation for VEX (Vulnerability Exploitability eXchange) document operations, written in Go.
 
 ## Overview
 
@@ -9,7 +9,7 @@ This project provides a high-performance MCP server that enables AI assistants t
 ## Architecture
 
 ```
-vexdoc-mcp/
+vexdoc-mcp-go/
 ├── cmd/
 │   └── server/          # Main server executable
 ├── internal/
@@ -18,8 +18,8 @@ vexdoc-mcp/
 │   └── vex/            # VEX library integration
 ├── pkg/
 │   └── api/            # Public API definitions
-├── docs/               # Documentation and ADRs
-└── research/           # Research materials
+├── test/               # Test files
+└── docs/               # Documentation
 ```
 
 ## Development Status
@@ -62,18 +62,18 @@ vexdoc-mcp/
 - ✅ Success scenarios, error paths, and edge cases covered
 
 **Phase 3: MCP Protocol Core** 🔄 DEFERRED
-- HTTP transport implementation (future consideration if needed)
+- HTTP transport implementation (deferred per user request)
 - Streaming support enhancements (future consideration)
 
 **Phases 6: Performance** ⏭️ NEXT
-- Performance optimization and benchmarking
+- Performance optimization and benchmarking vs Node.js
 - Load testing and profiling
 - Memory usage optimization
 
 **Phase 8: Deployment** ⏭️ FUTURE
 - Integration testing with real MCP clients
 - Production deployment configuration
-- Documentation and examples
+- Migration guide from Node.js version
 
 ## Getting Started
 
@@ -83,8 +83,8 @@ vexdoc-mcp/
 
 ### Installation
 ```bash
-git clone https://github.com/rosstaco/vexdoc-mcp.git
-cd vexdoc-mcp
+git clone https://github.com/rosstaco/vexdoc-mcp-go.git
+cd vexdoc-mcp-go
 go mod tidy
 ```
 
@@ -149,60 +149,6 @@ just help          # Show all available commands
 - **JSON processing**: Expected 2-3x faster than Node.js
 - **Concurrent requests**: Native goroutine support
 - **Binary size**: 2.9MB (optimized build)
-
-## Releases
-
-### Creating a Release
-
-This project uses automated semantic versioning with GitHub Actions and GoReleaser.
-
-#### Stable Release
-```bash
-# Tag the commit with a semantic version
-git tag v0.2.0
-git push origin v0.2.0
-```
-
-This will:
-- ✅ Run all CI tests
-- ✅ Build binaries for Linux, macOS, and Windows (amd64 & arm64)
-- ✅ Generate checksums for all artifacts
-- ✅ Create a GitHub release with changelog
-- ✅ Upload all binaries as release assets
-
-#### Pre-release (Beta/Alpha/RC)
-```bash
-# Tag with pre-release suffix
-git tag v0.2.0-beta.1
-git push origin v0.2.0-beta.1
-```
-
-Pre-releases are automatically detected and marked with a "Pre-release" badge on GitHub.
-
-### Release Artifacts
-
-Each release includes:
-- **Binaries**: `vexdoc-mcp-server_v{version}_{OS}_{ARCH}.tar.gz` (or `.zip` for Windows)
-- **Checksums**: `checksums.txt` with SHA256 hashes
-- **Changelog**: Auto-generated from commit messages
-- **Supported platforms**:
-  - Linux: amd64, arm64
-  - macOS: amd64 (Intel), arm64 (Apple Silicon)
-  - Windows: amd64, arm64
-
-### Installation from Release
-
-Download the appropriate binary for your platform from the [releases page](https://github.com/rosstaco/vexdoc-mcp/releases):
-
-```bash
-# Linux/macOS
-tar -xzf vexdoc-mcp-server_v*_Linux_x86_64.tar.gz
-chmod +x vexdoc-mcp-server
-sudo mv vexdoc-mcp-server /usr/local/bin/
-
-# Verify installation
-vexdoc-mcp-server --version
-```
 
 ## Contributing
 

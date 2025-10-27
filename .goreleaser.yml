@@ -1,0 +1,135 @@
+# GoReleaser configuration for vexdoc-mcp-server
+# See: https://goreleaser.com
+
+version: 2
+
+project_name: vexdoc-mcp-server
+
+before:
+  hooks:
+    # Ensure dependencies are up to date
+    - go mod tidy
+    - go mod download
+
+builds:
+  - id: vexdoc-mcp-server
+    main: ./cmd/server
+    binary: vexdoc-mcp-server
+    
+    env:
+      - CGO_ENABLED=0
+    
+    # Build for multiple platforms
+    goos:
+      - linux
+      - darwin
+      - windows
+    
+    goarch:
+      - amd64
+      - arm64
+    
+    # Version injection via ldflags
+    ldflags:
+      - -s -w
+      - -X github.com/rosstaco/vexdoc-mcp-go/internal/mcp.ServerVersion={{.Version}}
+    
+    # Optimize build size
+    flags:
+      - -trimpath
+
+archives:
+  - id: default
+    format: tar.gz
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- .Version }}_
+      {{- title .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
+      {{- else }}{{ .Arch }}{{ end }}
+      {{- if .Arm }}v{{ .Arm }}{{ end }}
+    
+    # Windows builds should be .zip
+    format_overrides:
+      - goos: windows
+        format: zip
+    
+    files:
+      - LICENSE
+      - README.md
+      - CHANGELOG.md
+
+checksum:
+  name_template: 'checksums.txt'
+  algorithm: sha256
+
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+
+changelog:
+  sort: asc
+  use: github
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^chore:'
+      - '^ci:'
+  groups:
+    - title: Features
+      regexp: '^.*?feat(\([[:word:]]+\))??!?:.+$'
+      order: 0
+    - title: 'Bug fixes'
+      regexp: '^.*?fix(\([[:word:]]+\))??!?:.+$'
+      order: 1
+    - title: 'Performance improvements'
+      regexp: '^.*?perf(\([[:word:]]+\))??!?:.+$'
+      order: 2
+    - title: Others
+      order: 999
+
+release:
+  github:
+    owner: rosstaco
+    name: vexdoc-mcp
+  
+  # Automatically detect pre-release versions
+  prerelease: auto
+  
+  # Release notes configuration
+  name_template: "{{.ProjectName}} v{{.Version}}"
+  
+  # Disable draft releases
+  draft: false
+  
+  # Replace existing releases
+  replace_existing_draft: true
+  
+  # Footer for release notes
+  footer: |
+    ## Installation
+    
+    Download the appropriate binary for your platform from the assets below.
+    
+    ### Linux/macOS
+    ```bash
+    # Extract the archive
+    tar -xzf vexdoc-mcp-server_*_Linux_x86_64.tar.gz
+    
+    # Make executable
+    chmod +x vexdoc-mcp-server
+    
+    # Move to PATH (optional)
+    sudo mv vexdoc-mcp-server /usr/local/bin/
+    ```
+    
+    ### Windows
+    Extract the ZIP file and add the executable to your PATH.
+    
+    ## Verify Installation
+    ```bash
+    vexdoc-mcp-server --version
+    ```
+    
+    **Full Changelog**: https://github.com/rosstaco/vexdoc-mcp/compare/{{.PreviousTag}}...{{.Tag}}
