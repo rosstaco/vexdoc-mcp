@@ -1,4 +1,4 @@
-module github.com/rosstaco/vexdoc-mcp-go
+module github.com/rosstaco/vexdoc-mcp
 
 go 1.22
 

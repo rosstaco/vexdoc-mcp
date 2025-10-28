@@ -83,7 +83,7 @@ vexdoc-mcp-go/
 
 ### Installation
 ```bash
-git clone https://github.com/rosstaco/vexdoc-mcp-go.git
+git clone https://github.com/rosstaco/vexdoc-mcp.git
 cd vexdoc-mcp-go
 go mod tidy
 ```

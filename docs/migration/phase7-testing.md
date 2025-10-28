@@ -35,9 +35,9 @@ import (
     "testing"
     "time"
     
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/logging"
-    "github.com/rosstaco/vexdoc-mcp-go/test/helpers"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/internal/logging"
+    "github.com/rosstaco/vexdoc-mcp/test/helpers"
 )
 
 func TestClient_CreateStatement(t *testing.T) {
@@ -416,8 +416,8 @@ import (
     "encoding/json"
     "testing"
     
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
-    "github.com/rosstaco/vexdoc-mcp-go/test/helpers"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/test/helpers"
 )
 
 func TestProtocolHandler_HandleInitialize(t *testing.T) {
@@ -636,7 +636,7 @@ import (
     "testing"
     "time"
     
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
 )
 
 func TestServer_StdioTransport(t *testing.T) {
@@ -1044,7 +1044,7 @@ import (
     "testing"
     "time"
     
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
 )
 
 func TestNodeJSCompatibility(t *testing.T) {

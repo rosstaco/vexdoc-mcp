@@ -454,8 +454,8 @@ import (
     "sync"
     "time"
     
-    "github.com/rosstaco/vexdoc-mcp-go/internal/logging"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/monitoring"
+    "github.com/rosstaco/vexdoc-mcp/internal/logging"
+    "github.com/rosstaco/vexdoc-mcp/internal/monitoring"
 )
 
 type MigrationManager struct {

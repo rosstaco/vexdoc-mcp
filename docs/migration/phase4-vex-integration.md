@@ -36,9 +36,9 @@ import (
     "time"
     
     "github.com/openvex/vex/pkg/vex"
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/logging"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/errors"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/internal/logging"
+    "github.com/rosstaco/vexdoc-mcp/internal/errors"
 )
 
 type Client struct {
@@ -331,9 +331,9 @@ import (
     "strings"
     
     "github.com/openvex/vex/pkg/vex"
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/logging"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/errors"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/internal/logging"
+    "github.com/rosstaco/vexdoc-mcp/internal/errors"
 )
 
 func (c *Client) MergeDocuments(ctx context.Context, opts *api.MergeOptions) (*api.VEXDocument, error) {
@@ -561,8 +561,8 @@ import (
     "fmt"
     "sync"
     
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/logging"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/internal/logging"
 )
 
 func (c *Client) StreamMerge(ctx context.Context, opts *api.StreamMergeOptions) (<-chan *api.MergeResult, error) {

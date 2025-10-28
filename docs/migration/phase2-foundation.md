@@ -198,7 +198,7 @@ import (
     "strconv"
     "strings"
     
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
 )
 
 // Load loads configuration from multiple sources
@@ -546,7 +546,7 @@ import (
     "encoding/json"
     "testing"
     
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
 )
 
 // MockVEXClient for testing

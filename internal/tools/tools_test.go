@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/rosstaco/vexdoc-mcp-go/internal/vex"
+	"github.com/rosstaco/vexdoc-mcp/internal/vex"
 )
 
 func TestVEXCreateTool_Name(t *testing.T) {
