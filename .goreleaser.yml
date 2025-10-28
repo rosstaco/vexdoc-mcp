@@ -13,7 +13,7 @@ before:
 
 builds:
   - id: vexdoc-mcp-server
-    main: ./cmd/server
+    main: .
     binary: vexdoc-mcp-server
     
     env:

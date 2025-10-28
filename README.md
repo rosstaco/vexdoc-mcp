@@ -94,7 +94,7 @@ go mod tidy
 just build
 
 # Or using Go directly
-go build -o vexdoc-mcp-server ./cmd/server
+go build -o vexdoc-mcp-server .
 ```
 
 ### Run

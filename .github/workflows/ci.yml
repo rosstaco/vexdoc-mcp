@@ -76,7 +76,7 @@ jobs:
           GOARCH: ${{ matrix.goarch }}
           CGO_ENABLED: 0
         run: |
-          go build -trimpath -ldflags="-s -w" -o dist/vexdoc-mcp-server-${{ matrix.goos }}-${{ matrix.goarch }}${{ matrix.goos == 'windows' && '.exe' || '' }} ./cmd/server
+          go build -trimpath -ldflags="-s -w" -o dist/vexdoc-mcp-server-${{ matrix.goos }}-${{ matrix.goarch }}${{ matrix.goos == 'windows' && '.exe' || '' }} .
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
