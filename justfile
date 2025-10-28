@@ -12,15 +12,15 @@ deps:
 
 # Build the server binary
 build:
-    go build -o vexdoc-mcp-server ./cmd/server
+    go build -o vexdoc-mcp-server .
 
 # Build with optimizations for production
 build-prod:
-    CGO_ENABLED=0 go build -ldflags="-s -w" -o vexdoc-mcp-server ./cmd/server
+    CGO_ENABLED=0 go build -ldflags="-s -w" -o vexdoc-mcp-server .
 
 # Run the server
 run:
-    go run ./cmd/server
+    go run .
 
 # Run tests
 test:
@@ -79,7 +79,7 @@ install-tools:
 # Run the server in development mode with verbose output
 dev:
     @echo "Starting VexDoc MCP Server in development mode..."
-    go run ./cmd/server
+    go run .
 
 # Watch for changes and rebuild (requires entr)
 watch:
