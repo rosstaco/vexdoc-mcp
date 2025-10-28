@@ -8,7 +8,7 @@ import (
 	"os"
 	"sync"
 
-	"github.com/rosstaco/vexdoc-mcp-go/pkg/api"
+	"github.com/rosstaco/vexdoc-mcp/pkg/api"
 )
 
 // StdioTransport implements the Transport interface using stdin/stdout

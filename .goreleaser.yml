@@ -32,7 +32,7 @@ builds:
     # Version injection via ldflags
     ldflags:
       - -s -w
-      - -X github.com/rosstaco/vexdoc-mcp-go/internal/mcp.ServerVersion={{.Version}}
+      - -X github.com/rosstaco/vexdoc-mcp/internal/mcp.ServerVersion={{.Version}}
     
     # Optimize build size
     flags:

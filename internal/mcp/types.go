@@ -1,6 +1,6 @@
 package mcp
 
-import "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
+import "github.com/rosstaco/vexdoc-mcp/pkg/api"
 
 // Standard JSON-RPC error codes
 const (

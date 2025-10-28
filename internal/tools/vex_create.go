@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/rosstaco/vexdoc-mcp-go/internal/vex"
-	"github.com/rosstaco/vexdoc-mcp-go/pkg/api"
+	"github.com/rosstaco/vexdoc-mcp/internal/vex"
+	"github.com/rosstaco/vexdoc-mcp/pkg/api"
 )
 
 // VEXCreateTool implements the create_vex_statement MCP tool

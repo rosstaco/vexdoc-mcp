@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/rosstaco/vexdoc-mcp-go/internal/vex"
-	"github.com/rosstaco/vexdoc-mcp-go/pkg/api"
+	"github.com/rosstaco/vexdoc-mcp/internal/vex"
+	"github.com/rosstaco/vexdoc-mcp/pkg/api"
 )
 
 // VEXMergeTool implements the merge_vex_documents MCP tool

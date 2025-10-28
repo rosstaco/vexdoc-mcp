@@ -232,7 +232,7 @@ func TestMCPParsing() error {
 **Commands to Execute:**
 ```bash
 mkdir vexdoc-mcp-go && cd vexdoc-mcp-go
-go mod init github.com/rosstaco/vexdoc-mcp-go
+go mod init github.com/rosstaco/vexdoc-mcp
 mkdir -p {cmd/server,internal/{mcp,tools,vex},pkg/api,test,scripts,docs}
 ```
 
@@ -359,7 +359,7 @@ import (
     "log"
     "sync"
     
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
 )
 
 type Server struct {
@@ -497,7 +497,7 @@ import (
     "io"
     "os"
     
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
 )
 
 type StdioTransport struct {
@@ -565,7 +565,7 @@ import (
     "net/http"
     "time"
     
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
 )
 
 type HTTPTransport struct {
@@ -1427,8 +1427,8 @@ import (
     "encoding/json"
     "fmt"
     
-    "github.com/rosstaco/vexdoc-mcp-go/internal/vex"
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/internal/vex"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
 )
 
 type VEXCreateTool struct {
@@ -1620,8 +1620,8 @@ import (
     "fmt"
     "strings"
     
-    "github.com/rosstaco/vexdoc-mcp-go/internal/vex"
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/internal/vex"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
 )
 
 type VEXMergeTool struct {

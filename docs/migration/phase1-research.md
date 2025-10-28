@@ -227,7 +227,7 @@ mkdir -p ~/projects/vexdoc-mcp-go
 cd ~/projects/vexdoc-mcp-go
 
 # Initialize Go module
-go mod init github.com/rosstaco/vexdoc-mcp-go
+go mod init github.com/rosstaco/vexdoc-mcp
 
 # Create basic project structure
 mkdir -p {cmd/server,internal/{mcp,tools,vex},pkg/api,test,docs}

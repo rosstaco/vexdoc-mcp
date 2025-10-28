@@ -7,7 +7,7 @@ import (
 	"os"
 	"sync"
 
-	"github.com/rosstaco/vexdoc-mcp-go/pkg/api"
+	"github.com/rosstaco/vexdoc-mcp/pkg/api"
 )
 
 // Server represents the MCP server instance

@@ -38,8 +38,8 @@ import (
     "sync"
     "time"
     
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/logging"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/internal/logging"
 )
 
 type StreamingHTTPTransport struct {
@@ -323,7 +323,7 @@ import (
     "encoding/json"
     "sync"
     
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
 )
 
 var (
@@ -396,8 +396,8 @@ import (
     "runtime"
     "sync"
     
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/performance"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/internal/performance"
 )
 
 // OptimizedClient provides high-performance VEX operations
@@ -546,7 +546,7 @@ import (
     "runtime"
     "time"
     
-    "github.com/rosstaco/vexdoc-mcp-go/internal/logging"
+    "github.com/rosstaco/vexdoc-mcp/internal/logging"
 )
 
 type MemoryMonitor struct {
@@ -626,9 +626,9 @@ import (
     "testing"
     "time"
     
-    "github.com/rosstaco/vexdoc-mcp-go/internal/vex"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/logging"
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/internal/vex"
+    "github.com/rosstaco/vexdoc-mcp/internal/logging"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
 )
 
 func BenchmarkVEXCreate(b *testing.B) {

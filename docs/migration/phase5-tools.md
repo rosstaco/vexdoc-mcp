@@ -34,10 +34,10 @@ import (
     "encoding/json"
     "fmt"
     
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/vex"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/logging"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/errors"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/internal/vex"
+    "github.com/rosstaco/vexdoc-mcp/internal/logging"
+    "github.com/rosstaco/vexdoc-mcp/internal/errors"
 )
 
 type CreateVEXStatementTool struct {
@@ -274,10 +274,10 @@ import (
     "fmt"
     "strings"
     
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/vex"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/logging"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/errors"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/internal/vex"
+    "github.com/rosstaco/vexdoc-mcp/internal/logging"
+    "github.com/rosstaco/vexdoc-mcp/internal/errors"
 )
 
 type MergeVEXDocumentsTool struct {
@@ -641,8 +641,8 @@ import (
     "fmt"
     "sync"
     
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/logging"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/internal/logging"
 )
 
 type Registry struct {
@@ -721,11 +721,11 @@ import (
     "log"
     "os"
     
-    "github.com/rosstaco/vexdoc-mcp-go/internal/config"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/logging"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/mcp"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/vex"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/tools"
+    "github.com/rosstaco/vexdoc-mcp/internal/config"
+    "github.com/rosstaco/vexdoc-mcp/internal/logging"
+    "github.com/rosstaco/vexdoc-mcp/internal/mcp"
+    "github.com/rosstaco/vexdoc-mcp/internal/vex"
+    "github.com/rosstaco/vexdoc-mcp/internal/tools"
 )
 
 func main() {

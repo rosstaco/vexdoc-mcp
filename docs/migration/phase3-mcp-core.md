@@ -35,9 +35,9 @@ import (
     "fmt"
     "sync"
     
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/logging"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/errors"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/internal/logging"
+    "github.com/rosstaco/vexdoc-mcp/internal/errors"
 )
 
 type ProtocolHandler struct {
@@ -287,8 +287,8 @@ import (
     "net/http"
     "sync"
     
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/logging"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/internal/logging"
 )
 
 // StdioTransport handles communication via stdin/stdout
@@ -537,8 +537,8 @@ import (
     "io"
     "os"
     
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/logging"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/internal/logging"
 )
 
 func CreateTransport(config api.TransportConfig, logger logging.Logger) (api.Transport, error) {
@@ -586,8 +586,8 @@ import (
     "sync"
     "syscall"
     
-    "github.com/rosstaco/vexdoc-mcp-go/pkg/api"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/logging"
+    "github.com/rosstaco/vexdoc-mcp/pkg/api"
+    "github.com/rosstaco/vexdoc-mcp/internal/logging"
 )
 
 type Server struct {
@@ -738,9 +738,9 @@ import (
     "log"
     "os"
     
-    "github.com/rosstaco/vexdoc-mcp-go/internal/config"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/logging"
-    "github.com/rosstaco/vexdoc-mcp-go/internal/mcp"
+    "github.com/rosstaco/vexdoc-mcp/internal/config"
+    "github.com/rosstaco/vexdoc-mcp/internal/logging"
+    "github.com/rosstaco/vexdoc-mcp/internal/mcp"
 )
 
 func main() {

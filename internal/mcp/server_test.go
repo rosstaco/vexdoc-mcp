@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/rosstaco/vexdoc-mcp-go/pkg/api"
+	"github.com/rosstaco/vexdoc-mcp/pkg/api"
 )
 
 // mockTool is a simple tool for testing

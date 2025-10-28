@@ -4,9 +4,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/rosstaco/vexdoc-mcp-go/internal/mcp"
-	"github.com/rosstaco/vexdoc-mcp-go/internal/tools"
-	"github.com/rosstaco/vexdoc-mcp-go/internal/vex"
+	"github.com/rosstaco/vexdoc-mcp/internal/mcp"
+	"github.com/rosstaco/vexdoc-mcp/internal/tools"
+	"github.com/rosstaco/vexdoc-mcp/internal/vex"
 )
 
 func main() {
